@@ -1,19 +1,37 @@
 import CategoryCard from "./CategoryCard";
-import { FaScrewdriverWrench } from "react-icons/fa6";
-import { FaTruck } from "react-icons/fa6";
-import { FaBrush } from "react-icons/fa6";
-import { FaBucket } from "react-icons/fa6";
-import { FaLightbulb } from "react-icons/fa6";
-import { PiPipeFill } from "react-icons/pi";
 import styles from "./CategoryList.module.scss";
 
 const categories = [
-  { name: "cleaning", icon: FaBucket, color: "#b12fde" },
-  { name: "repair", icon: FaScrewdriverWrench, color: "#ecbb3a" },
-  { name: "painting", icon: FaBrush, color: "#e23e40" },
-  { name: "shifting", icon: FaTruck, color: "#059e96" },
-  { name: "plumbing", icon: PiPipeFill, color: "#ea9319" },
-  { name: "electric", icon: FaLightbulb, color: "#1f71c5" },
+  {
+    name: "cleaning",
+    color: "#b12fde",
+    url: "https://img.icons8.com/?size=100&id=8088&format=png&color=000000",
+  },
+  {
+    name: "repair",
+    color: "#ecbb3a",
+    url: "https://img.icons8.com/?size=100&id=59827&format=png&color=000000",
+  },
+  {
+    name: "painting",
+    color: "#059e96",
+    url: "https://img.icons8.com/?size=100&id=8141&format=png&color=000000",
+  },
+  {
+    name: "shifting",
+    color: "#e23e40",
+    url: "https://img.icons8.com/?size=100&id=9341&format=png&color=000000",
+  },
+  {
+    name: "plumbing",
+    color: "#ea9319",
+    url: "https://img.icons8.com/?size=100&id=24925&format=png&color=000000",
+  },
+  {
+    name: "electric",
+    color: "#1f71c5",
+    url: "https://img.icons8.com/?size=100&id=9094&format=png&color=000000",
+  },
 ];
 
 const CategoryList = () => {
