@@ -1,6 +1,5 @@
-import Topbar from "../components/layout/Topbar";
-import Hero from "../components/home/Hero";
-import CategoryList from "../components/home/CategoryList";
+import Hero from "@/components/home/Hero";
+import CategoryList from "@/components/home/CategoryList";
 
 const Home = () => {
   return (
