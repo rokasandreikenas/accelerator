@@ -11,4 +11,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const newCategory = new Category(req.body);
+    await newCategory.save();
+    res.status(201).json(newCategory);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Error creating booking", error: err?.message ?? err });
+  }
+});
+
 module.exports = router;
