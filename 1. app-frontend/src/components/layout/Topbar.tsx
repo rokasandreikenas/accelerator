@@ -4,8 +4,8 @@ import Button from "../common/Button";
 import styles from "./Topbar.module.scss";
 import Logo from "../../assets/logo.svg";
 import { useContext } from "react";
-import { UserContext } from "@/context/UserContext";
 import Avatar from "../common/Avatar";
+import { UserContext } from "@/context/UserContext";
 
 const Topbar = () => {
   const { user } = useContext(UserContext);

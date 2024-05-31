@@ -1,5 +1,5 @@
-import { categories } from "../../consts/category";
 import CategoryCard from "./CategoryCard";
+import { categories } from "./consts";
 import styles from "./VerticalCategoryList.module.scss";
 
 const VerticalCategoryList = () => {

@@ -16,13 +16,10 @@
   gap: 1rem;
   background-color: #f2eefd;
   border-radius: 0.5rem;
-
-  .name {
-    font-size: 1.1rem;
-    text-transform: capitalize;
-    color: #9977ef;
-    font-weight: 500;
-  }
+  border: none;
+  font-size: 1.1rem;
+  color: #9977ef;
+  font-weight: 500;
 
   &:hover {
     background-color: #f7f4fd;

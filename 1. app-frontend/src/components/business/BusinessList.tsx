@@ -1,11 +1,17 @@
 import classNames from "classnames";
-import { businesses } from "@/consts/business";
 import BusinessCard from "./BusinessCard";
 import styles from "./BusinessList.module.scss";
+import { businesses } from "./consts";
+import { Category } from "../category/types";
 
-const BusinessList = ({ category, className }) => {
-  const filteredBusiness = category
-    ? businesses.filter((business) => business.category === category)
+interface BusinessListProps {
+  categoryName?: Category["name"];
+  className?: string;
+}
+
+const BusinessList = ({ categoryName, className }: BusinessListProps) => {
+  const filteredBusiness = categoryName
+    ? businesses.filter((business) => business.category === categoryName)
     : businesses;
   return (
     <div className={classNames(styles.container, className)}>

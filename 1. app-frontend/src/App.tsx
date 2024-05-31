@@ -1,15 +1,15 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import Services from "./pages/Services";
 import AboutUs from "./pages/AboutUs";
 import { ROUTES } from "./router/consts";
-import RootLayout from "./components/layout/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Login";
 import SearchCategory from "./pages/SearchCategory";
-import AuthLayout from "./components/layout/AuthLayout";
 import Register from "./pages/Register";
+import AuthLayout from "./components/layout/AuthLayout";
+import RootLayout from "./components/layout/RootLayout";
 import { UserProvider } from "./context/UserContext";
+import Services from "./pages/Services";
 
 const router = createBrowserRouter([
   {
