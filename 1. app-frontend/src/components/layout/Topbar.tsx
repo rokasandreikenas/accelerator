@@ -42,7 +42,7 @@ const Topbar = () => {
       </div>
       <div className={styles.rightSide}>
         {user ? (
-          <Avatar>{user.email[0]}</Avatar>
+          <Avatar>{user.name[0]}</Avatar>
         ) : (
           <Button onClick={() => navigate(ROUTES.LOGIN)} large>
             Login / Sign Up

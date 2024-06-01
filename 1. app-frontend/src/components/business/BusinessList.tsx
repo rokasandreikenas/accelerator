@@ -5,6 +5,7 @@ import styles from "./BusinessList.module.scss";
 import { Category } from "../category/types";
 import { useEffect, useState } from "react";
 import { Business } from "./types";
+import { fetchBusinesses } from "./api";
 
 interface BusinessListProps {
   categoryName?: Category["name"];
@@ -15,10 +16,9 @@ const BusinessList = ({ categoryName, className }: BusinessListProps) => {
   const [businesses, setBusinesses] = useState<Business[]>([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/businesses")
+    fetchBusinesses()
       .then((response) => {
-        setBusinesses(response.data);
+        setBusinesses(response);
       })
       .catch((error) => {
         console.error(error);
