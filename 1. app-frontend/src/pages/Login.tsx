@@ -6,11 +6,13 @@ import Input from "@/components/common/Input";
 import { UserContext } from "@/context/UserContext";
 import { loginUser } from "@/components/user/api";
 import styles from "./Login.module.scss";
+import { AxiosError } from "axios";
 
 const Login = () => {
   const { login } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event: SyntheticEvent) => {
@@ -20,7 +22,9 @@ const Login = () => {
       login(response);
       navigate(ROUTES.HOME);
     } catch (error) {
-      console.error(error);
+      const errorMessage = error as AxiosError<{ message: string }>;
+      console.error(errorMessage);
+      setError(errorMessage.response?.data.message ?? "");
     }
   };
 
@@ -44,6 +48,7 @@ const Login = () => {
           required
           className={styles.input}
         />
+        {error && <p className={styles.error}>{error}</p>}
         <Button type="submit">Log in</Button>
         <div className={styles.link}>
           <Link to={ROUTES.REGISTER} className={styles.signUp}>
