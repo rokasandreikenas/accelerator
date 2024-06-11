@@ -1,24 +1,25 @@
-import { SyntheticEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Form, Formik } from "formik";
 import { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { ROUTES } from "@/router/consts";
 import Button from "@/components/common/Button";
-import Input from "@/components/common/Input";
 import { registerUser } from "@/components/user/api";
 import styles from "./Login.module.scss";
+import FormikField from "@/components/common/FormikInput";
+import {
+  registerInitialValus,
+  reigsterValidationSchema,
+} from "@/components/user/consts";
+import { RegisterRequest } from "@/components/user/types";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: SyntheticEvent) => {
-    event.preventDefault();
+  const handleSubmit = async (formValues: RegisterRequest) => {
     try {
-      await registerUser({ name, email, password });
+      await registerUser(formValues);
       navigate(ROUTES.LOGIN);
       enqueueSnackbar("Registration successful", {
         variant: "success",
@@ -34,38 +35,34 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <h2 className={styles.title}>Register</h2>
-        <Input
-          placeholder="Name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          required
-          className={styles.input}
-        />
-        <Input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          required
-          className={styles.input}
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          required
-          className={styles.input}
-        />
-        <Button type="submit">Register</Button>
-        <div className={styles.link}>
-          <Link to={ROUTES.REGISTER} className={styles.signUp}>
-            Already have an account? Log in
-          </Link>
-        </div>
-      </form>
+      <Formik
+        initialValues={registerInitialValus}
+        validationSchema={reigsterValidationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={styles.form}>
+          <h2 className={styles.title}>Register</h2>
+          <div className={styles.field}>
+            <FormikField name="name" placeholder="Name" />
+          </div>
+          <div className={styles.field}>
+            <FormikField name="email" type="email" placeholder="Email" />
+          </div>
+          <div className={styles.field}>
+            <FormikField
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <Button type="submit">Register</Button>
+          <div className={styles.link}>
+            <Link to={ROUTES.REGISTER} className={styles.signUp}>
+              Already have an account? Log in
+            </Link>
+          </div>
+        </Form>
+      </Formik>
     </div>
   );
 };
