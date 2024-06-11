@@ -26,7 +26,6 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = authHeader.split(" ")[1];
     const payload = jwt.verify(token, process.env.JWT_SECRET!) as UserPayload;
-    console.log(payload);
     req.currentUser = payload;
   } catch (err) {
     res.status(401).send({ error: "Not authenticated" });
