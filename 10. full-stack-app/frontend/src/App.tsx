@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import { ROUTES } from "./router/consts";
@@ -51,13 +52,17 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <UserProvider>
-      <SnackbarProvider>
-        <RouterProvider router={router} />
-      </SnackbarProvider>
-    </UserProvider>
+    <QueryClientProvider client={queryClient}>
+      <UserProvider>
+        <SnackbarProvider>
+          <RouterProvider router={router} />
+        </SnackbarProvider>
+      </UserProvider>
+    </QueryClientProvider>
   );
 };
 
