@@ -37,4 +37,21 @@ describe("<UserList />", () => {
       expect(screen.getByText(/Failed to load users/i)).toBeInTheDocument()
     );
   });
+
+  // galima naudoti it
+  //   it("shows 'So much users!' if there are more than 5 users", async () => {
+  //     const muchUsers = [
+  //       ...users,
+  //       { id: 3, name: "Rokas Doe" },
+  //       { id: 4, name: "Tadas Doe" },
+  //       { id: 5, name: "Greta Doe" },
+  //     ];
+  //     mockedAxios.get.mockResolvedValue({ data: muchUsers });
+
+  //     render(<UserList />);
+
+  //     await waitFor(() =>
+  //       expect(screen.getByText(/So much users!/i)).toBeInTheDocument()
+  //     );
+  //   });
 });
