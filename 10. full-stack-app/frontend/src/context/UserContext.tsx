@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext } from "react";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import { useLocalStorage } from "usehooks-ts";
 import { LoginResponse, User } from "@/components/user/types";
 
 const UserContext = createContext<{

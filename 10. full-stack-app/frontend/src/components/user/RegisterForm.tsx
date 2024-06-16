@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { ROUTES } from "@/router/consts";
 import Button from "@/components/common/Button";

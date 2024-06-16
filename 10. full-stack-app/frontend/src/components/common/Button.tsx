@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./Button.module.scss";
 
@@ -30,11 +29,6 @@ const Button = ({
       {props.children}
     </button>
   );
-};
-
-Button.propTypes = {
-  className: PropTypes.string,
-  rounded: PropTypes.bool,
 };
 
 export default Button;
