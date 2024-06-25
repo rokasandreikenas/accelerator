@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ThemeContext } from "../context/ThemeContext";
 
 const documents = [
   { id: 1, name: "Doc 1" },
@@ -9,6 +10,8 @@ const documents = [
 const UserProfile = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
@@ -25,6 +28,9 @@ const UserProfile = () => {
 
   return (
     <div>
+      Tema dabar yra: {theme}
+      <button onClick={toggleTheme}>Pakeisti tematika</button>
+      <br />
       User profile page for user {userId}
       <h1>{user.name}</h1>
       <button>Go to first document</button>

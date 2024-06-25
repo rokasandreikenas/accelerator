@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Services from "./pages/Services";
 import UserProfileDocuments from "./pages/UserProfileDocuments";
 import Button from "./components/Button";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const Team = () => {
   return <div>My team...</div>;
@@ -65,7 +66,11 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 };
 
 export default App;
