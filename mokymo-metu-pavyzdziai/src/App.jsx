@@ -6,20 +6,20 @@ import Services from "./pages/Services";
 import UserProfileDocuments from "./pages/UserProfileDocuments";
 import Button from "./components/Button";
 import { ThemeProvider } from "./context/ThemeContext";
-
+import Home from "./pages/Home";
 const Team = () => {
   return <div>My team...</div>;
 };
 
-const Home = () => {
-  return (
-    <div>
-      <Hero />
-      <br />
-      <Button />
-    </div>
-  );
-};
+// const Home = () => {
+//   return (
+//     <div>
+//       <Hero />
+//       <br />
+//       <Button />
+//     </div>
+//   );
+// };
 
 const Root = () => {
   return (
