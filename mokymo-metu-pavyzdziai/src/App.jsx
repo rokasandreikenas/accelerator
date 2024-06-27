@@ -7,6 +7,7 @@ import UserProfileDocuments from "./pages/UserProfileDocuments";
 import Button from "./components/Button";
 import { ThemeProvider } from "./context/ThemeContext";
 import Home from "./pages/Home";
+import Register from "./pages/Register";
 const Team = () => {
   return <div>My team...</div>;
 };
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />,
+        element: <Register />,
       },
       {
         path: "services",
