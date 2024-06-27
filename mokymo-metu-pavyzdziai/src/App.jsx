@@ -26,6 +26,11 @@ const Root = () => {
   return (
     <>
       <header>
+        <nav>
+          <a href="#">Test</a>
+        </nav>
+      </header>
+      <header>
         <h1>Logo</h1>
       </header>
       <Outlet />
