@@ -9,8 +9,9 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    const token = authHeader.split(' ')[1];
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const token = authHeader.split(' ')[1]; // istraukiamas token
+    const payload = jwt.verify(token, process.env.JWT_SECRET); // patikrinama, jeigu viskas ok, grazina userio info
+    console.log(payload);
     req.currentUser = payload;
   } catch (err) {
     res.status(401).send({ error: 'Not authenticated' });
@@ -21,3 +22,9 @@ const authMiddleware = (req, res, next) => {
 };
 
 module.exports = authMiddleware;
+
+// generateToken
+// {id: 123} + JWT_SECRET = token
+
+// authMiddleware
+// token + JWT_SECRET = {id:123}
