@@ -1,6 +1,7 @@
 const express = require("express");
 const Category = require("../models/Category");
 const Business = require("../models/Business");
+const Booking = require("../models/Booking");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 const router = express.Router();
@@ -57,9 +58,7 @@ router.get("/category/:category", async (req, res) => {
     });
     res.json(filteredBusinesses);
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching businesses by category", error: err });
+    res.status(500).json({ message: "Error fetching businesses by category", error: err });
   }
 });
 
