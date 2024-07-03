@@ -7,6 +7,8 @@ const router = express.Router();
 // Retrieve all users
 router.get('/', authMiddleware, async (req, res) => {
   try {
+    console.log('from users', req.currentUser);
+
     const users = await User.find();
     return res.json(users);
   } catch (err) {
