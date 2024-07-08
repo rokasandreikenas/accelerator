@@ -7,10 +7,6 @@ interface BusinessCardProps {
 }
 
 const BusinessCard = ({ business }: BusinessCardProps) => {
-  const x: any = 1;
-
-  const y = (x as string).repeat(1);
-
   return (
     <div className={styles.card}>
       {business.imageUrls.length && (
