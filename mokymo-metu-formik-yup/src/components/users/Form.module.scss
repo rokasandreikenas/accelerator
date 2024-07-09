@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+}
