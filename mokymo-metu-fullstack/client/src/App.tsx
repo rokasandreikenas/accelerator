@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { Category } from "./types/category";
+import { fetchCategories } from "./api/category";
 
-interface Category {
-  name: string;
-  color: string;
-  url: string;
-}
-
-const CategoryList = () => {
+const App = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/categories")
+    fetchCategories()
       .then((response) => {
-        setCategories(response.data);
+        setCategories(response);
       })
       .catch((error) => {
         console.error(error);
@@ -30,4 +24,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default App;
