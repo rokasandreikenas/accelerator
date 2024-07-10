@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
-import { Category } from "./types/category";
-import { fetchCategories } from "./api/category";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // 1. import
+import Home from "./pages/Home";
+
+const queryClient = new QueryClient(); // 2. create instance
 
 const App = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-    fetchCategories()
-      .then((response) => {
-        setCategories(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
+  // 3. Wrapp and use
   return (
-    <div>
-      {categories.map((category) => (
-        <div key={category.name}>{category.name}</div>
-      ))}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Home />
+    </QueryClientProvider>
   );
 };
 
