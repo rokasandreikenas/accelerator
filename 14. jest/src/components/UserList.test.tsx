@@ -16,7 +16,8 @@ describe("<UserList />", () => {
 
     render(<UserList />);
 
-    expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
+    const loader = screen.getByText(/Loading.../i);
+    expect(loader).toBeInTheDocument();
 
     await waitFor(() =>
       expect(screen.getByText(/John Doe/i)).toBeInTheDocument()

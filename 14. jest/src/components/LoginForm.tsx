@@ -28,6 +28,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div data-testid="login-label">Login</div>
       <label>
         Username:
         <input
