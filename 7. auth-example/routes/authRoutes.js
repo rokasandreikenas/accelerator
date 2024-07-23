@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Incorrect email or password' });
     }
 
-    const token = generateToken({ id: user._id }); // unikalus userio tokenas, pagal kuri mes galime atsekti kas kviecia musu API
+    const token = generateToken(user._id); // unikalus userio tokenas, pagal kuri mes galime atsekti kas kviecia musu API
 
     const userWithoutPassword = await User.findById(user._id).select('-password');
 
