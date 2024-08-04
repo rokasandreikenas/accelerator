@@ -47,6 +47,15 @@ app.get("/categories", (req, res) => {
   res.json(data.categories);
 });
 
+app.post("/categories", (req, res) => {
+  const newCategory = {
+    id: data.categories.length + 1,
+    ...req.body,
+  };
+  data.categories.push(newCategory);
+  res.status(201).json(newCategory);
+});
+
 // Businesses
 app.get("/businesses", (req, res) => {
   res.json(data.businesses);
@@ -68,6 +77,13 @@ app.get("/businesses/:id", (req, res) => {
   }
 });
 
+app.get("/businesses/:businessId/bookings/date/:date", (req, res) => {
+  const slots = data.bookings.filter(
+    (b) => b.businessId == req.params.businessId && b.date === req.params.date
+  );
+  res.json(slots);
+});
+
 // Bookings
 app.post("/bookings", (req, res) => {
   const { businessId, date, time, userEmail, userName } = req.body;
@@ -82,13 +98,6 @@ app.post("/bookings", (req, res) => {
   };
   data.bookings.push(newBooking);
   res.status(201).json(newBooking);
-});
-
-app.get("/businesses/:businessId/bookings/date/:date", (req, res) => {
-  const slots = data.bookings.filter(
-    (b) => b.businessId == req.params.businessId && b.date === req.params.date
-  );
-  res.json(slots);
 });
 
 app.get("/bookings/user/:email", (req, res) => {

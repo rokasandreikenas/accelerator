@@ -16,6 +16,18 @@ app.get("/categories", async (req, res) => {
   }
 });
 
+app.post("/categories", async (req, res) => {
+  try {
+    const newCategory = new Category(req.body);
+    await newCategory.save();
+    res.status(201).json(newCategory);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Error creating category", error: err?.message ?? err });
+  }
+});
+
 app.get("/businesses", async (req, res) => {
   try {
     const businesses = await Business.find();
@@ -31,11 +43,9 @@ app.post("/businesses", async (req, res) => {
   try {
     const categoryExists = await Category.findOne({ name: business.category });
     if (!categoryExists) {
-      return res
-        .status(400)
-        .json({
-          message: "Failed to add business: specified category does not exist.",
-        });
+      return res.status(400).json({
+        message: "Failed to add business: specified category does not exist.",
+      });
     }
 
     const newBusiness = new Business(business);
@@ -43,12 +53,10 @@ app.post("/businesses", async (req, res) => {
     const savedBusiness = await newBusiness.save();
     res.status(201).json(savedBusiness);
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        message: "Server error while adding business.",
-        error: err.message,
-      });
+    res.status(500).json({
+      message: "Server error while adding business.",
+      error: err.message,
+    });
   }
 });
 
@@ -78,18 +86,6 @@ app.get("/businesses/:id", async (req, res) => {
   }
 });
 
-app.post("/bookings", async (req, res) => {
-  try {
-    const newBooking = new Booking(req.body);
-    await newBooking.save();
-    res.status(201).json(newBooking);
-  } catch (err) {
-    res
-      .status(400)
-      .json({ message: "Error creating booking", error: err?.message ?? err });
-  }
-});
-
 app.get("/businesses/:businessId/bookings/date/:date", async (req, res) => {
   try {
     const slots = await Booking.find({
@@ -102,6 +98,18 @@ app.get("/businesses/:businessId/bookings/date/:date", async (req, res) => {
       message: "Error fetching bookings for the specified date and business",
       error: err,
     });
+  }
+});
+
+app.post("/bookings", async (req, res) => {
+  try {
+    const newBooking = new Booking(req.body);
+    await newBooking.save();
+    res.status(201).json(newBooking);
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Error creating booking", error: err?.message ?? err });
   }
 });
 
