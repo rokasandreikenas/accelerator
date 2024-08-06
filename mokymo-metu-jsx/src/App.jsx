@@ -4,6 +4,9 @@ import Greeting from "./components/Greeting";
 import Counter from "./components/Counter";
 import MultiInputForm from "./components/MultiInputForm";
 import { useState } from "react";
+import { CiBeerMugFull } from "react-icons/ci";
+import Test from "./components/Test";
+import Users from "./components/Users";
 
 function App() {
   const [array, setArray] = useState([]);
@@ -42,8 +45,6 @@ function App() {
     );
   };
 
-  console.log(array);
-
   return (
     <div>
       <WelcomeMessage name="Rokas" />
@@ -59,6 +60,9 @@ function App() {
       <button onClick={handleAddNumber}>Add extra number</button>
       <button onClick={handleRemoveItem}>Remove array item</button>
       <button onClick={handleUpdateItem}>Update array item</button>
+      <CiBeerMugFull fontSize={48} />
+      <Test />
+      <Users />
     </div>
   );
 }
