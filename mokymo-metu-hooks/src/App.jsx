@@ -3,6 +3,15 @@ import Todos from "./components/Todos";
 import Users from "./components/Users";
 import useFetch from "./hooks/useFetch";
 
+// useState
+// useEffect
+// useContext - react context panaudojimui (naudojamas kaip global state pvz)
+// useMemo - naudojamas performance gerinimui
+// useCallback - naudojamas performance gerinimui
+// useRef - reference naudojimas
+// useReducer - specialus formatas duomenų valdymui (labai panašu į Redux)
+// useLayoutEffect - labai panašus į useEffect, suveikia prieš užkraunant pilnai komponentą
+
 const App = () => {
   const { data, loading, error } = useFetch(
     "https://jsonplaceholder.typicode.com/users"
