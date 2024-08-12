@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { useLocalStorage } from "usehooks-ts";
 
 const UserContext = createContext({
@@ -30,8 +30,3 @@ const UserProvider = ({ children }) => {
 
 // fourth step - export context and provider
 export { UserContext, UserProvider };
-
-// <UserProvder>
-//  Children
-//     <div></div>
-// </UserProvder>
