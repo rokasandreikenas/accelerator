@@ -30,7 +30,8 @@ app.get("/books/:id", (req, res) => {
 // req.params = dinaminiai elementai po :
 // req.query = kas po ?query=
 
-app.get("/search/:title/:author", (req, res) => {
+// search?title=Harry&author=J.K
+app.get("/search", (req, res) => {
   const { title, author } = req.query; // Gaunami užklausų parametrai iš URL
   const results = books.filter((book) => {
     if (title && author) {
