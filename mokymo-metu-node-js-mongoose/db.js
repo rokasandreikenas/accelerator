@@ -22,3 +22,6 @@ const connectToDb = async () => {
 };
 
 module.exports = { connectToDb, PORT };
+
+// const bookst => let books
+// prideti dbName prie uzduoties pvz

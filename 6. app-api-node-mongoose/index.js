@@ -131,3 +131,13 @@ connectToDb()
   .catch((err) => {
     console.error("Failed to connect to the database", err);
   });
+
+// {userId: 1} + JWT_SECRET = very long JWT token (eUvCmQGos2--MBQdUZTHbBhNYXb0nCcg4)
+// eUvCmQGos2--MBQdUZTHbBhNYXb0nCcg4 + JWT_SECRET = {userId: 1}
+
+// POST /register
+// {email: "rokas@gmail.com", password: rokas123}
+// presave + bcrypt hash
+// rokas123 => eUvCmQGos2--MBQdUZTHbBhNYXb0nCcg4
+
+// bcrypt.compare(password, this.password); rokas123 (ushashins) === eUvCmQGos2--MBQdUZTHbBhNYXb0nCcg4
