@@ -1,13 +1,26 @@
 const express = require("express");
 const Book = require("../schemas/Book");
+const User = require("../schemas/User");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 const router = express.Router();
-
+// {
+//   "_id": "66bcdcabb9a36dbb3ecc788a",
+//   "userId": "66c362873318ca2bd59459f4",
+//   "title": "How to code",
+//   "author": "Rokas A.",
+//   "ISBN": "147",
+//   "createdAt": "2024-08-14T16:34:51.782Z",
+//   "updatedAt": "2024-08-14T16:34:51.782Z"
+// }
 router.get("/books", authMiddleware, async (req, res) => {
   try {
     const books = await Book.find();
     console.log(req.currentUser);
+    const existingUser = await User.findById(req.currentUser.id).select(
+      "-password"
+    );
+    console.log(existingUser);
     res.json(books);
   } catch (error) {
     res.status(500).json({ error: error.message });

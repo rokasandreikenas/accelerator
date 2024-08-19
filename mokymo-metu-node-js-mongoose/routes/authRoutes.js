@@ -37,7 +37,11 @@ router.post("/login", async (req, res) => {
     }
 
     const token = generateToken({ id: existingUser._id });
-    return res.json({ message: "All good", token, user: existingUser });
+    const existingUserWithoutPassword = await User.findOne({
+      email: user.email,
+    }).select("-password");
+
+    return res.json({ token, user: existingUserWithoutPassword });
   } catch (error) {
     return res
       .status(500)
@@ -46,3 +50,6 @@ router.post("/login", async (req, res) => {
 });
 
 module.exports = router;
+
+// {id: 1264asdas56d852632} + JWT_SECRET generatedToken => asf54a1sdf2a1sf5dsf846sdf4sdf
+// asf54a1sdf2a1sf5dsf846sdf4sdf + JWT_SECRET authMiddleware ir darom verify => {id: 1264asdas56d852632}
