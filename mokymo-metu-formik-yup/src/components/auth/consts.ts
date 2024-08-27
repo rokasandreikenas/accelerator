@@ -11,6 +11,10 @@ export const loginValidationSchema: Yup.Schema<LoginFormValues> =
       .required("Laukas būtinas"),
   });
 
+export const schema = Yup.object().shape({
+  age: Yup.number().min(18, "Too young").max(99, "Too old"),
+});
+
 export const loginFormInitialValues: LoginFormValues = {
   email: "",
   password: "",

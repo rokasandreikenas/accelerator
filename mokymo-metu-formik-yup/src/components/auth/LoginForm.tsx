@@ -32,6 +32,7 @@ const LoginForm = () => {
     return errors;
   };
 
+  // {password: "Erorras"}
   return (
     <div>
       <Formik
